@@ -1,16 +1,18 @@
 class Solution {
 public:
-    int fib(int num) {
-
-        vector<int> arr(num + 1,0);
-        if(num==0)return 0;
-        
-        arr[0]=0;
-        arr[1]=1;
-        for(int i=2;i<=num;i++){
-            arr[i]=arr[i-1]+arr[i-2];
+    int a(int n,vector<int>&arr){
+        if(n==0 || n==1){
+            return n;
 
         }
-        return arr[num];
+        if(arr[n]!=-1){
+            return arr[n];
+        }
+        arr[n]= a(n-1 , arr)+a(n-2 , arr);
+        return arr[n];
+    }
+    int fib(int n) {
+        vector<int>arr(n+1,-1);
+        return a(n,arr);
     }
 };
