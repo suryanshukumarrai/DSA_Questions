@@ -1,19 +1,25 @@
 class Solution {
 public:
+bool check(int num){
+    int temp = num;
+    while(temp){
+        int digit = temp%10;
+        if(digit == 0) return false;
+        temp /= 10;
+    }
+
+    return true;
+}
     vector<int> getNoZeroIntegers(int n) {
-        auto check = [](int x) {
-            while (x > 0) {
-                if (x % 10 == 0) return false;
-                x /= 10;
-            }
-            return true;
-        };
-        for (int i = 1; i < n; ++i) {
-            int j = n - i;
-            if (check(i) && check(j)) {
-                return {i, j};
+        vector<int> ans;
+        for(int i = 1 ; i<n ; i++){
+            if(check(n-i) && check(i)){
+                ans.push_back(i);
+                ans.push_back(n-i);
+                break;
             }
         }
-        return {};
+
+        return ans;
     }
 };
