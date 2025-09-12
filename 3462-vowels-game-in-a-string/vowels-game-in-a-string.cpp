@@ -1,7 +1,12 @@
 class Solution {
 public:
     bool doesAliceWin(string s) {
-        return count_if(s.begin(), s.end(), [](char c) {
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';});
+        for (char ch : s) {
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                return true;  // found a vowel
+                break;
+            }
+        }
+        return false;  // no vowels found
     }
 };
