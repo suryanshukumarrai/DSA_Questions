@@ -1,15 +1,6 @@
 class Solution {
 public:
-    int maxBottlesDrunk(int numBottles, int numExchange) {
-        int bottleDrunk = numBottles;
-        int emptyBottles = numBottles;
-
-        while (emptyBottles >= numExchange) {
-            emptyBottles -= numExchange;
-            numExchange++;
-            bottleDrunk++;
-            emptyBottles++;
-        }
-        return bottleDrunk;
+    int maxBottlesDrunk(int n, int k) {
+        return n+((-2*k+3+sqrt(4*k*k+8*n-12*k+1))/2);
     }
 };
