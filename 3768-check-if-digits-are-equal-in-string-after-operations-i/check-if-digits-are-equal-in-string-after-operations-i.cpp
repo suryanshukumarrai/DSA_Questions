@@ -1,17 +1,13 @@
 class Solution {
 public:
     bool hasSameDigits(string s) {
-        vector<int> a;
-        for(char c : s) a.push_back(c - '0'); 
-
-        while(a.size() > 2) {
-            vector<int> temp;
-            for(int i = 0; i < a.size() - 1; i++) {
-                temp.push_back((a[i] + a[i+1]) % 10);
+        int n = s.length();
+        while (n > 2) {
+            for (int i = 0; i < n - 1; i++) {
+                s[i] = ((s[i] - '0' + s[i + 1] - '0') % 10) + '0';
             }
-            a = temp;
+            n--;
         }
-
-        return a[0] == a[1];
+        return s[0] == s[1];
     }
 };
